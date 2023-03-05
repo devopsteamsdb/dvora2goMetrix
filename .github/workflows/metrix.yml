@@ -55,6 +55,12 @@ jobs:
           $Results
           ls
 
+      - uses: actions/upload-artifact@v2
+        if: matrix.os == 'macos-latest'
+        with:
+          name: macos-hash
+          path: ./macos_github*
+          
       - name: Download all links from file - Linux
         if: matrix.os == 'ubuntu-latest'
         run: |
