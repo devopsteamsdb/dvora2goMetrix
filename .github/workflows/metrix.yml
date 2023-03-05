@@ -45,7 +45,15 @@ jobs:
           brew install parallel
           cd ./DownloadFiles
           cat ../Downloads.txt | parallel --gnu "wget {}"
-          
+
+      - name: Get all Files Hashes - Macos
+        if: matrix.os == 'macos-latest'
+        shell: pwsh
+        run: |
+          $Results = Get-ChildItem ./DownloadFiles -File | Get-FileHash | Select -Property hash, @{N='File'; E={$_.path.split('/')[-1]}} 
+          $Results | Export-Csv -Path ./macos_hash.csv -Encoding UTF8
+          $Results
+
       - name: Download all links from file - Linux
         if: matrix.os == 'ubuntu-latest'
         run: |
@@ -61,3 +69,4 @@ jobs:
           $Results = Get-ChildItem ./DownloadFiles -File | Get-FileHash | Select -Property hash, @{N='File'; E={$_.path.split('/')[-1]}} 
           $Results | Export-Csv -Path ./linux_hash.csv -Encoding UTF8
           $Results
+
