@@ -35,6 +35,6 @@ jobs:
         if: matrix.os != 'windows-latest'
         run: echo ${{ matrix.os }} 
 
-      - name: Matrix Version ${{ matrix.version }}
+      - name: Matrix Version ${{ matrix.python-version }}
         if: matrix.os != 'windows-latest'
-        run: echo ${{ matrix.version }}
+        run: echo ${{ matrix.python-version }}
