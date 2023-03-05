@@ -34,5 +34,5 @@ jobs:
       - name: Matrix OS ${{ matrix.os }}
         run: echo ${{ matrix.os }} 
 
-      - name: Matrix Run ${{ matrix.run }}
-        run: echo ${{ matrix.run }}
+      - name: printenv
+        run: printenv
