@@ -51,7 +51,7 @@ jobs:
         shell: pwsh
         run: |
           $Results = Get-ChildItem ./DownloadFiles -File | Get-FileHash | Select -Property hash, @{N='File'; E={$_.path.split('/')[-1]}} 
-          $Results | Export-Csv -Path ./macos_$RUNNER_TRACKING_ID.csv -Encoding UTF8
+          $Results | Export-Csv -Path "./macos_$($env:RUNNER_TRACKING_ID).csv" -Encoding UTF8
           $Results
           ls
 
