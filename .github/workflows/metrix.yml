@@ -31,6 +31,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
-      - name: Get Local IPv4 - Linux and Macos
+      - name: Matrix OS ${{ matrix.os }}
         if: matrix.os != 'windows-latest'
-        run: echo ${{ matrix.os }} ${{ matrix.node }}
+        run: echo ${{ matrix.os }} 
+
+      - name: Matrix Node ${{ matrix.node }}
+        if: matrix.os != 'windows-latest'
+        run: echo ${{ matrix.node }}
