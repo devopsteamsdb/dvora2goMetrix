@@ -81,7 +81,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: linux-hash
-          path: ./linux__github*
+          path: ./linux_github*
 
   compare_hash:
     runs-on: ubuntu-latest
