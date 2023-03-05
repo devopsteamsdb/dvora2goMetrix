@@ -36,3 +36,10 @@ jobs:
 
       - name: RUNNER_TRACKING_ID
         run: echo $RUNNER_TRACKING_ID
+        
+      - name: Download all links from file - Macos
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew install parallel
+          cd ./DownloadFiles
+          cat ../Downloads.txt | parallel --gnu "wget {}"
