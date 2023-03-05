@@ -76,6 +76,7 @@ jobs:
           $Results = Get-ChildItem ./DownloadFiles -File | Get-FileHash | Select -Property hash, @{N='File'; E={$_.path.split('/')[-1]}} 
           $Results | Export-Csv -Path ./linux_$($env:RUNNER_TRACKING_ID).csv -Encoding UTF8
           $Results
+          ls
 
       - uses: actions/upload-artifact@v2
         with:
