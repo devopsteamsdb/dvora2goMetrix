@@ -77,3 +77,11 @@ jobs:
           $Results | Export-Csv -Path ./linux_hash.csv -Encoding UTF8
           $Results
 
+  compare_hash:
+    runs-on: ubuntu-latest
+    needs: [theMatrix]
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: get all files in current directory
+        run: dir
