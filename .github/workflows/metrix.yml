@@ -40,6 +40,7 @@ jobs:
       - name: Download all links from file - Macos
         if: matrix.os == 'macos-latest'
         run: |
+          ls -la
           brew install parallel
           cd ./DownloadFiles
           cat ../Downloads.txt | parallel --gnu "wget {}"
