@@ -34,5 +34,5 @@ jobs:
       - name: Matrix OS ${{ matrix.os }}
         run: echo ${{ matrix.os }} 
 
-      - name: printenv
-        run: printenv
+      - name: RUNNER_TRACKING_ID
+        run: echo $RUNNER_TRACKING_ID
