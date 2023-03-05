@@ -105,7 +105,6 @@ jobs:
         run: dir
 
       - name: Get all Files Hashes - Linux
-        if: matrix.os == 'ubuntu-latest'
         shell: pwsh
         run: |
           Get-ChildItem . -Filter *.csv | Select-Object -ExpandProperty FullName | Import-Csv  | select -Unique | Export-Csv ./merged.csv -NoTypeInformation -Append
