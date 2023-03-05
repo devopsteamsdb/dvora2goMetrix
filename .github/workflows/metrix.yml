@@ -74,8 +74,13 @@ jobs:
         shell: pwsh
         run: |
           $Results = Get-ChildItem ./DownloadFiles -File | Get-FileHash | Select -Property hash, @{N='File'; E={$_.path.split('/')[-1]}} 
-          $Results | Export-Csv -Path ./linux_hash.csv -Encoding UTF8
+          $Results | Export-Csv -Path ./linux_$($env:RUNNER_TRACKING_ID).csv -Encoding UTF8
           $Results
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: linux-hash
+          path: ./linux__github*
 
   compare_hash:
     runs-on: ubuntu-latest
@@ -87,6 +92,13 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: macos-hash
-          
+
+      - name: download-artifact - macos-hash
+        uses: actions/download-artifact@v2
+        with:
+          name: linux-hash
+
+### Get-ChildItem C:\Users\itamartz\Desktop\macos-hash -Filter *.csv | Select-Object -ExpandProperty FullName | Import-Csv  | select -Unique | Export-Csv c:\temp\merged.csv -NoTypeInformation -Append
+
       - name: get all files in current directory
         run: dir
