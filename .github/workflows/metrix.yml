@@ -45,3 +45,11 @@ jobs:
           brew install parallel
           cd ./DownloadFiles
           cat ../Downloads.txt | parallel --gnu "wget {}"
+          
+      - name: Download all links from file - Linux
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          ls -la
+          mkdir DownloadFiles
+          cd ./DownloadFiles
+          cat ../Downloads.txt | parallel --gnu "wget {}"
