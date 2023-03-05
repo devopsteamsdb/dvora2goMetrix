@@ -83,5 +83,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - name: download-artifact - macos-hash
+        uses: actions/download-artifact@v2
+        with:
+          name: macos-hash
+          
       - name: get all files in current directory
         run: dir
