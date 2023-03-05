@@ -41,6 +41,7 @@ jobs:
         if: matrix.os == 'macos-latest'
         run: |
           ls -la
+          mkdir DownloadFiles
           brew install parallel
           cd ./DownloadFiles
           cat ../Downloads.txt | parallel --gnu "wget {}"
